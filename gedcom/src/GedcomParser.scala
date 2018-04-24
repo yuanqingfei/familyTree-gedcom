@@ -1,5 +1,6 @@
 package gedcom
 
+import org.gedcom4j.model.enumerations.IndividualEventType
 import org.gedcom4j.model.{Family, Individual, IndividualReference, StringWithCustomFacts}
 import org.gedcom4j.parser.GedcomParser
 
@@ -24,13 +25,43 @@ object MyGedcomParser {
 
     //    println(treeMap)
     import java.io._
-    val pw = new PrintWriter(new File("gedcom/resources/yuanGEDCOM.dot"))
+
+    val pw = new PrintWriter(new File("index.html"))
+
+    val htmlHead =
+      """
+        |<!DOCTYPE html>
+        |<meta charset="utf-8">
+        |<body>
+        |<script src="https://unpkg.com/d3@5.0.0/dist/d3.min.js"></script>
+        |<script src="https://unpkg.com/viz.js@1.8.0/viz.js" type="javascript/worker"></script>
+        |<script src="https://unpkg.com/d3-graphviz@1.4.0/build/d3-graphviz.min.js"></script>
+        |<div id="graph" style="text-align: center;"></div>
+        |<script>
+        |
+        |var dotString = `
+      """.stripMargin
+    pw.write(htmlHead)
 
     pw.write(printDotHead)
     for ((gen, families) <- treeMap) {
       pw.write(printDotFamilies(gen, families))
     }
     pw.write(printEnd)
+
+    val htmlEnd =
+      """
+        |`;
+        |
+        |d3.select("#graph").graphviz()
+        |    .addImage("https://yuanqingfei.me/images/placeholder-m.png", 35, 35)
+        |    .addImage("https://yuanqingfei.me/images/placeholder-f.png", 35, 35)
+        |    .fade(false)
+        |    .renderDot(dotString);
+        |
+        |</script>
+      """.stripMargin
+    pw.write(htmlEnd)
 
     pw.close
   }
@@ -76,7 +107,17 @@ object MyGedcomParser {
     }
 
     val marrigeNode = husbandSignature + "And" + wifeSignature
-    val husbandAndWife = getIndRender(family.getHusband.getIndividual) + wifeRender + marrigeNode + " [shape = point] \n" + husbandSignature + " -> " + marrigeNode + " -> " + wifeSignature + "\n"
+    var husbandAndWife = getIndRender(family.getHusband.getIndividual) + wifeRender + marrigeNode + " [shape = point] \n"
+    val specialForTwoWife = wifeSignature + " -> " + marrigeNode + " -> " + husbandSignature + "\n"
+    val normalOneWife = husbandSignature + " -> " + marrigeNode + " -> " + wifeSignature + "\n"
+
+    // special route for I0014 as she is the first wife of HONG
+    if(wifeSignature.equals("I0014")){
+      husbandAndWife += specialForTwoWife
+    } else {
+      husbandAndWife += normalOneWife
+    }
+
     val parentGraph = printSubHead(myTrim(family.getXref)) + husbandAndWife + printEnd
 
     val connectNode = marrigeNode + "Connect"
@@ -103,10 +144,30 @@ object MyGedcomParser {
 
   def getIndRender(person: Individual) = {
     val signatureName = getSignature(person)
+    val basicName = person.getNames.get(0);
+
+    var birthDate = "";
+    val birthEvents = person.getEventsOfType(IndividualEventType.BIRTH)
+    if(birthEvents != null && birthEvents.size() > 0){
+      birthDate = birthEvents.get(0).getDate.toString
+    }
+    var deathDate = "";
+    val deathEvents = person.getEventsOfType(IndividualEventType.DEATH)
+    if( deathEvents != null && deathEvents.size() > 0){
+      deathDate = deathEvents.get(0).getDate.toString
+    }
+
+    val mPng = "https://yuanqingfei.me/images/placeholder-m.png"
+    val fPng = "https://yuanqingfei.me/images/placeholder-f.png"
+
+    var labelStrS = """<<table border="0" cellborder="0"><tr><td><img src=""""
+    var labelStrE = "\"/></td></tr><tr><td>" + basicName.getSurname + " " + basicName.getGivenName + "<br/>" + birthDate + " - " + deathDate + "</td></tr></table>>"
+
+
     if (person.getSex.getValue.equalsIgnoreCase("F")) {
-      signatureName + " [label=\"" + person.getNames.get(0).getBasic + "\"]  [color=pink] \n"
+      signatureName + " [label=" + labelStrS + fPng + labelStrE + "]  [color=pink] \n"
     } else {
-      signatureName + " [label=\"" + person.getNames.get(0).getBasic + "\"] \n"
+      signatureName + " [label=" + labelStrS + mPng + labelStrE +"] \n"
     }
   }
 

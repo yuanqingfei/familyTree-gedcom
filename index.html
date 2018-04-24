@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <body>
@@ -7,520 +8,518 @@
 <div id="graph" style="text-align: center;"></div>
 <script>
 
-
-<!--d3.csv("gedcom/resources/yuanGEDCOM.dot", function(data) {-->
-    <!--console.log(data);-->
-<!--});-->
-
-d3.select("#graph").graphviz()
-    .fade(false)
-    .renderDot(`
-
-
-graph {
+var dotString = `
+      
+digraph {
     //splines = ortho;
     //rankdir="LR";
     node [shape = box, color=blue];
     edge [dir = none];
-    /////////////////////// No. 1 generation ////////////////////
-//############
+    /////////////////////// No. 1 generation //////////////////// 
+//############ 
 subgraph F0000 {
 rank = same
-I0000 [label="清 /袁/"]
-I0000W [color=pink]
-I0000AndI0000W [shape = point]
-I0000 -- I0000AndI0000W -- I0000W
+I0000 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 清<br/>1360 - 1410</td></tr></table>>] 
+I0000W [color=pink] 
+I0000AndI0000W [shape = point] 
+I0000 -> I0000AndI0000W -> I0000W
 }
 subgraph I0000AndI0000WConnect {
 rank = same
 I0000AndI0000WConnect [shape = point, width = 0]
 }
-I0000AndI0000W -- I0000AndI0000WConnect
+I0000AndI0000W -> I0000AndI0000WConnect
 subgraph I0000AndI0000WChildren {
 rank = same
-I0001 [label="仲 /袁/"]
+I0001 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 仲<br/>1390 - 1440</td></tr></table>>] 
 }
-I0000AndI0000WConnect -- I0001
-/////////////////////// No. 2 generation ////////////////////
-//############
+I0000AndI0000WConnect -> I0001
+/////////////////////// No. 2 generation //////////////////// 
+//############ 
 subgraph F0001 {
 rank = same
-I0001 [label="仲 /袁/"]
-I0001W [color=pink]
-I0001AndI0001W [shape = point]
-I0001 -- I0001AndI0001W -- I0001W
+I0001 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 仲<br/>1390 - 1440</td></tr></table>>] 
+I0001W [color=pink] 
+I0001AndI0001W [shape = point] 
+I0001 -> I0001AndI0001W -> I0001W
 }
 subgraph I0001AndI0001WConnect {
 rank = same
 I0001AndI0001WConnect [shape = point, width = 0]
 }
-I0001AndI0001W -- I0001AndI0001WConnect
+I0001AndI0001W -> I0001AndI0001WConnect
 subgraph I0001AndI0001WChildren {
 rank = same
-I0002 [label="玘 /袁/"]
+I0002 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 玘<br/>1420 - 1470</td></tr></table>>] 
 }
-I0001AndI0001WConnect -- I0002
-/////////////////////// No. 3 generation ////////////////////
-//############
+I0001AndI0001WConnect -> I0002
+/////////////////////// No. 3 generation //////////////////// 
+//############ 
 subgraph F0002 {
 rank = same
-I0002 [label="玘 /袁/"]
-I0002W [color=pink]
-I0002AndI0002W [shape = point]
-I0002 -- I0002AndI0002W -- I0002W
+I0002 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 玘<br/>1420 - 1470</td></tr></table>>] 
+I0002W [color=pink] 
+I0002AndI0002W [shape = point] 
+I0002 -> I0002AndI0002W -> I0002W
 }
 subgraph I0002AndI0002WConnect {
 rank = same
 I0002AndI0002WConnect [shape = point, width = 0]
 }
-I0002AndI0002W -- I0002AndI0002WConnect
+I0002AndI0002W -> I0002AndI0002WConnect
 subgraph I0002AndI0002WChildren {
 rank = same
-I0003 [label="洪 /袁/"]
-I0004 [label="河 /袁/"]
-I0005 [label="潭 /袁/"]
-I0006 [label="铎 /袁/"]
+I0003 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 洪<br/>1450 - 1500</td></tr></table>>] 
+I0004 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 河<br/>1450 - 1500</td></tr></table>>] 
+I0005 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 潭<br/>1450 - 1500</td></tr></table>>] 
+I0006 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 铎<br/>1450 - 1500</td></tr></table>>] 
 }
-I0002AndI0002WConnect -- I0003
-I0002AndI0002WConnect -- I0004
-I0002AndI0002WConnect -- I0005
-I0002AndI0002WConnect -- I0006
-/////////////////////// No. 4 generation ////////////////////
-//############
+I0002AndI0002WConnect -> I0003
+I0002AndI0002WConnect -> I0004
+I0002AndI0002WConnect -> I0005
+I0002AndI0002WConnect -> I0006
+/////////////////////// No. 4 generation //////////////////// 
+//############ 
 subgraph F0003 {
 rank = same
-I0003 [label="洪 /袁/"]
-I0014 [label="氏 /辛/"]  [color=pink]
-I0003AndI0014 [shape = point]
-I0014 -- I0003AndI0014 -- I0003
+I0003 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 洪<br/>1450 - 1500</td></tr></table>>] 
+I0014 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>辛 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0003AndI0014 [shape = point] 
+I0014 -> I0003AndI0014 -> I0003
 }
 subgraph I0003AndI0014Connect {
 rank = same
 I0003AndI0014Connect [shape = point, width = 0]
 }
-I0003AndI0014 -- I0003AndI0014Connect
+I0003AndI0014 -> I0003AndI0014Connect
 subgraph I0003AndI0014Children {
 rank = same
-I0009 [label="秋 /袁/"]
-I0010 [label="林 /袁/"]
+I0009 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 秋<br/>1480 - 1530</td></tr></table>>] 
+I0010 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 林<br/>1480 - 1530</td></tr></table>>] 
 }
-I0003AndI0014Connect -- I0009
-I0003AndI0014Connect -- I0010
-//############
+I0003AndI0014Connect -> I0009
+I0003AndI0014Connect -> I0010
+//############ 
 subgraph F0004 {
 rank = same
-I0003 [label="洪 /袁/"]
-I0015 [label="氏 /吴/"]  [color=pink]
-I0003AndI0015 [shape = point]
-I0003 -- I0003AndI0015 -- I0015
+I0003 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 洪<br/>1450 - 1500</td></tr></table>>] 
+I0015 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>吴 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0003AndI0015 [shape = point] 
+I0003 -> I0003AndI0015 -> I0015
 }
 subgraph I0003AndI0015Connect {
 rank = same
 I0003AndI0015Connect [shape = point, width = 0]
 }
-I0003AndI0015 -- I0003AndI0015Connect
+I0003AndI0015 -> I0003AndI0015Connect
 subgraph I0003AndI0015Children {
 rank = same
-I0011 [label="文 /袁/"]
-I0012 [label="章 /袁/"]
-I0013 [label="策 /袁/"]
+I0011 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 文<br/>1480 - 1530</td></tr></table>>] 
+I0012 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 章<br/>1480 - 1530</td></tr></table>>] 
+I0013 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 策<br/>1480 - 1530</td></tr></table>>] 
 }
-I0003AndI0015Connect -- I0011
-I0003AndI0015Connect -- I0012
-I0003AndI0015Connect -- I0013
-/////////////////////// No. 5 generation ////////////////////
-//############
+I0003AndI0015Connect -> I0011
+I0003AndI0015Connect -> I0012
+I0003AndI0015Connect -> I0013
+/////////////////////// No. 5 generation //////////////////// 
+//############ 
 subgraph F0005 {
 rank = same
-I0011 [label="文 /袁/"]
-I0011W [color=pink]
-I0011AndI0011W [shape = point]
-I0011 -- I0011AndI0011W -- I0011W
+I0011 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 文<br/>1480 - 1530</td></tr></table>>] 
+I0011W [color=pink] 
+I0011AndI0011W [shape = point] 
+I0011 -> I0011AndI0011W -> I0011W
 }
 subgraph I0011AndI0011WConnect {
 rank = same
 I0011AndI0011WConnect [shape = point, width = 0]
 }
-I0011AndI0011W -- I0011AndI0011WConnect
+I0011AndI0011W -> I0011AndI0011WConnect
 subgraph I0011AndI0011WChildren {
 rank = same
-I0016 [label="景辉 /袁/"]
+I0016 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 景辉<br/>1510 - 1560</td></tr></table>>] 
 }
-I0011AndI0011WConnect -- I0016
-/////////////////////// No. 6 generation ////////////////////
-//############
+I0011AndI0011WConnect -> I0016
+/////////////////////// No. 6 generation //////////////////// 
+//############ 
 subgraph F0006 {
 rank = same
-I0016 [label="景辉 /袁/"]
-I0016W [color=pink]
-I0016AndI0016W [shape = point]
-I0016 -- I0016AndI0016W -- I0016W
+I0016 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 景辉<br/>1510 - 1560</td></tr></table>>] 
+I0016W [color=pink] 
+I0016AndI0016W [shape = point] 
+I0016 -> I0016AndI0016W -> I0016W
 }
 subgraph I0016AndI0016WConnect {
 rank = same
 I0016AndI0016WConnect [shape = point, width = 0]
 }
-I0016AndI0016W -- I0016AndI0016WConnect
+I0016AndI0016W -> I0016AndI0016WConnect
 subgraph I0016AndI0016WChildren {
 rank = same
-I0017 [label="立本 /袁/"]
+I0017 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 立本<br/>1540 - 1590</td></tr></table>>] 
 }
-I0016AndI0016WConnect -- I0017
-/////////////////////// No. 7 generation ////////////////////
-//############
+I0016AndI0016WConnect -> I0017
+/////////////////////// No. 7 generation //////////////////// 
+//############ 
 subgraph F0007 {
 rank = same
-I0017 [label="立本 /袁/"]
-I0017W [color=pink]
-I0017AndI0017W [shape = point]
-I0017 -- I0017AndI0017W -- I0017W
+I0017 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 立本<br/>1540 - 1590</td></tr></table>>] 
+I0017W [color=pink] 
+I0017AndI0017W [shape = point] 
+I0017 -> I0017AndI0017W -> I0017W
 }
 subgraph I0017AndI0017WConnect {
 rank = same
 I0017AndI0017WConnect [shape = point, width = 0]
 }
-I0017AndI0017W -- I0017AndI0017WConnect
+I0017AndI0017W -> I0017AndI0017WConnect
 subgraph I0017AndI0017WChildren {
 rank = same
-I0018 [label="思问 /袁/"]
-I0019 [label="思齐 /袁/"]
+I0018 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 思问<br/>1570 - 1620</td></tr></table>>] 
+I0019 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 思齐<br/>1570 - 1620</td></tr></table>>] 
 }
-I0017AndI0017WConnect -- I0018
-I0017AndI0017WConnect -- I0019
-/////////////////////// No. 8 generation ////////////////////
-//############
+I0017AndI0017WConnect -> I0018
+I0017AndI0017WConnect -> I0019
+/////////////////////// No. 8 generation //////////////////// 
+//############ 
 subgraph F0008 {
 rank = same
-I0018 [label="思问 /袁/"]
-I0018W [color=pink]
-I0018AndI0018W [shape = point]
-I0018 -- I0018AndI0018W -- I0018W
+I0018 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 思问<br/>1570 - 1620</td></tr></table>>] 
+I0018W [color=pink] 
+I0018AndI0018W [shape = point] 
+I0018 -> I0018AndI0018W -> I0018W
 }
 subgraph I0018AndI0018WConnect {
 rank = same
 I0018AndI0018WConnect [shape = point, width = 0]
 }
-I0018AndI0018W -- I0018AndI0018WConnect
+I0018AndI0018W -> I0018AndI0018WConnect
 subgraph I0018AndI0018WChildren {
 rank = same
-I0020 [label="凤 /袁/"]
-I0021 [label="鹍 /袁/"]
-I0022 [label="鹏 /袁/"]
+I0020 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 凤<br/>1600 - 1650</td></tr></table>>] 
+I0021 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 鹍<br/>1600 - 1650</td></tr></table>>] 
+I0022 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 鹏<br/>1600 - 1650</td></tr></table>>] 
 }
-I0018AndI0018WConnect -- I0020
-I0018AndI0018WConnect -- I0021
-I0018AndI0018WConnect -- I0022
-/////////////////////// No. 9 generation ////////////////////
-//############
+I0018AndI0018WConnect -> I0020
+I0018AndI0018WConnect -> I0021
+I0018AndI0018WConnect -> I0022
+/////////////////////// No. 9 generation //////////////////// 
+//############ 
 subgraph F0009 {
 rank = same
-I0022 [label="鹏 /袁/"]
-I0022W [color=pink]
-I0022AndI0022W [shape = point]
-I0022 -- I0022AndI0022W -- I0022W
+I0022 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 鹏<br/>1600 - 1650</td></tr></table>>] 
+I0022W [color=pink] 
+I0022AndI0022W [shape = point] 
+I0022 -> I0022AndI0022W -> I0022W
 }
 subgraph I0022AndI0022WConnect {
 rank = same
 I0022AndI0022WConnect [shape = point, width = 0]
 }
-I0022AndI0022W -- I0022AndI0022WConnect
+I0022AndI0022W -> I0022AndI0022WConnect
 subgraph I0022AndI0022WChildren {
 rank = same
-I0023 [label="开和 /袁/"]
-I0024 [label="景和 /袁/"]
-I0025 [label="从圣 /袁/"]
+I0023 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 开和<br/>1630 - 1680</td></tr></table>>] 
+I0024 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 景和<br/>1630 - 1680</td></tr></table>>] 
+I0025 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 从圣<br/>1630 - 1680</td></tr></table>>] 
 }
-I0022AndI0022WConnect -- I0023
-I0022AndI0022WConnect -- I0024
-I0022AndI0022WConnect -- I0025
-/////////////////////// No. 10 generation ////////////////////
-//############
+I0022AndI0022WConnect -> I0023
+I0022AndI0022WConnect -> I0024
+I0022AndI0022WConnect -> I0025
+/////////////////////// No. 10 generation //////////////////// 
+//############ 
 subgraph F0010 {
 rank = same
-I0025 [label="从圣 /袁/"]
-I0058 [label="氏 /宋/"]  [color=pink]
-I0025AndI0058 [shape = point]
-I0025 -- I0025AndI0058 -- I0058
+I0025 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 从圣<br/>1630 - 1680</td></tr></table>>] 
+I0058 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>宋 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0025AndI0058 [shape = point] 
+I0025 -> I0025AndI0058 -> I0058
 }
 subgraph I0025AndI0058Connect {
 rank = same
 I0025AndI0058Connect [shape = point, width = 0]
 }
-I0025AndI0058 -- I0025AndI0058Connect
+I0025AndI0058 -> I0025AndI0058Connect
 subgraph I0025AndI0058Children {
 rank = same
-I0026 [label="国玉 /袁/"]
-I0027 [label="国典 /袁/"]
-I0028 [label="国维 /袁/"]
+I0026 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 国玉<br/>1660 - 1710</td></tr></table>>] 
+I0027 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 国典<br/>1660 - 1710</td></tr></table>>] 
+I0028 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 国维<br/>1660 - 1710</td></tr></table>>] 
 }
-I0025AndI0058Connect -- I0026
-I0025AndI0058Connect -- I0027
-I0025AndI0058Connect -- I0028
-/////////////////////// No. 11 generation ////////////////////
-//############
+I0025AndI0058Connect -> I0026
+I0025AndI0058Connect -> I0027
+I0025AndI0058Connect -> I0028
+/////////////////////// No. 11 generation //////////////////// 
+//############ 
 subgraph F0011 {
 rank = same
-I0026 [label="国玉 /袁/"]
-I0059 [label="氏 /陈/"]  [color=pink]
-I0026AndI0059 [shape = point]
-I0026 -- I0026AndI0059 -- I0059
+I0026 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 国玉<br/>1660 - 1710</td></tr></table>>] 
+I0059 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>陈 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0026AndI0059 [shape = point] 
+I0026 -> I0026AndI0059 -> I0059
 }
 subgraph I0026AndI0059Connect {
 rank = same
 I0026AndI0059Connect [shape = point, width = 0]
 }
-I0026AndI0059 -- I0026AndI0059Connect
+I0026AndI0059 -> I0026AndI0059Connect
 subgraph I0026AndI0059Children {
 rank = same
-I0029 [label="肃 /袁/"]
-I0030 [label="佐 /袁/"]
+I0029 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 肃<br/>1690 - 1740</td></tr></table>>] 
+I0030 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 佐<br/>1690 - 1740</td></tr></table>>] 
 }
-I0026AndI0059Connect -- I0029
-I0026AndI0059Connect -- I0030
-/////////////////////// No. 12 generation ////////////////////
-//############
+I0026AndI0059Connect -> I0029
+I0026AndI0059Connect -> I0030
+/////////////////////// No. 12 generation //////////////////// 
+//############ 
 subgraph F0012 {
 rank = same
-I0030 [label="佐 /袁/"]
-I0030W [color=pink]
-I0030AndI0030W [shape = point]
-I0030 -- I0030AndI0030W -- I0030W
+I0030 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 佐<br/>1690 - 1740</td></tr></table>>] 
+I0030W [color=pink] 
+I0030AndI0030W [shape = point] 
+I0030 -> I0030AndI0030W -> I0030W
 }
 subgraph I0030AndI0030WConnect {
 rank = same
 I0030AndI0030WConnect [shape = point, width = 0]
 }
-I0030AndI0030W -- I0030AndI0030WConnect
+I0030AndI0030W -> I0030AndI0030WConnect
 subgraph I0030AndI0030WChildren {
 rank = same
-I0031 [label="世辅 /袁/"]
+I0031 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 世辅<br/>1720 - 1770</td></tr></table>>] 
 }
-I0030AndI0030WConnect -- I0031
-/////////////////////// No. 13 generation ////////////////////
-//############
+I0030AndI0030WConnect -> I0031
+/////////////////////// No. 13 generation //////////////////// 
+//############ 
 subgraph F0013 {
 rank = same
-I0031 [label="世辅 /袁/"]
-I0060 [label="氏 /刘/"]  [color=pink]
-I0031AndI0060 [shape = point]
-I0031 -- I0031AndI0060 -- I0060
+I0031 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 世辅<br/>1720 - 1770</td></tr></table>>] 
+I0060 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>刘 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0031AndI0060 [shape = point] 
+I0031 -> I0031AndI0060 -> I0060
 }
 subgraph I0031AndI0060Connect {
 rank = same
 I0031AndI0060Connect [shape = point, width = 0]
 }
-I0031AndI0060 -- I0031AndI0060Connect
+I0031AndI0060 -> I0031AndI0060Connect
 subgraph I0031AndI0060Children {
 rank = same
-I0032 [label="廷楷 /袁/"]
-I0033 [label="廷柱 /袁/"]
-I0034 [label="廷楫 /袁/"]
-I0035 [label="廷相 /袁/"]
+I0032 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 廷楷<br/>1750 - 1800</td></tr></table>>] 
+I0033 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 廷柱<br/>1750 - 1800</td></tr></table>>] 
+I0034 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 廷楫<br/>1750 - 1800</td></tr></table>>] 
+I0035 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 廷相<br/>1750 - 1800</td></tr></table>>] 
 }
-I0031AndI0060Connect -- I0032
-I0031AndI0060Connect -- I0033
-I0031AndI0060Connect -- I0034
-I0031AndI0060Connect -- I0035
-/////////////////////// No. 14 generation ////////////////////
-//############
+I0031AndI0060Connect -> I0032
+I0031AndI0060Connect -> I0033
+I0031AndI0060Connect -> I0034
+I0031AndI0060Connect -> I0035
+/////////////////////// No. 14 generation //////////////////// 
+//############ 
 subgraph F0014 {
 rank = same
-I0035 [label="廷相 /袁/"]
-I0061 [label="氏 /张/"]  [color=pink]
-I0035AndI0061 [shape = point]
-I0035 -- I0035AndI0061 -- I0061
+I0035 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 廷相<br/>1750 - 1800</td></tr></table>>] 
+I0061 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>张 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0035AndI0061 [shape = point] 
+I0035 -> I0035AndI0061 -> I0061
 }
 subgraph I0035AndI0061Connect {
 rank = same
 I0035AndI0061Connect [shape = point, width = 0]
 }
-I0035AndI0061 -- I0035AndI0061Connect
+I0035AndI0061 -> I0035AndI0061Connect
 subgraph I0035AndI0061Children {
 rank = same
-I0036 [label="经琢 /袁/"]
-I0037 [label="经璞 /袁/"]
-I0038 [label="经玉 /袁/"]
-I0039 [label="经琨 /袁/"]
+I0036 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 经琢<br/>1780 - 1830</td></tr></table>>] 
+I0037 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 经璞<br/>1780 - 1830</td></tr></table>>] 
+I0038 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 经玉<br/>1780 - 1830</td></tr></table>>] 
+I0039 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 经琨<br/>1780 - 1830</td></tr></table>>] 
 }
-I0035AndI0061Connect -- I0036
-I0035AndI0061Connect -- I0037
-I0035AndI0061Connect -- I0038
-I0035AndI0061Connect -- I0039
-/////////////////////// No. 15 generation ////////////////////
-//############
+I0035AndI0061Connect -> I0036
+I0035AndI0061Connect -> I0037
+I0035AndI0061Connect -> I0038
+I0035AndI0061Connect -> I0039
+/////////////////////// No. 15 generation //////////////////// 
+//############ 
 subgraph F0015 {
 rank = same
-I0037 [label="经璞 /袁/"]
-I0062 [label="氏 /王/"]  [color=pink]
-I0037AndI0062 [shape = point]
-I0037 -- I0037AndI0062 -- I0062
+I0037 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 经璞<br/>1780 - 1830</td></tr></table>>] 
+I0062 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>王 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0037AndI0062 [shape = point] 
+I0037 -> I0037AndI0062 -> I0062
 }
 subgraph I0037AndI0062Connect {
 rank = same
 I0037AndI0062Connect [shape = point, width = 0]
 }
-I0037AndI0062 -- I0037AndI0062Connect
+I0037AndI0062 -> I0037AndI0062Connect
 subgraph I0037AndI0062Children {
 rank = same
-I0040 [label="佰亮 /袁/"]
+I0040 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 佰亮<br/>1810 - 1860</td></tr></table>>] 
 }
-I0037AndI0062Connect -- I0040
-/////////////////////// No. 16 generation ////////////////////
-//############
+I0037AndI0062Connect -> I0040
+/////////////////////// No. 16 generation //////////////////// 
+//############ 
 subgraph F0016 {
 rank = same
-I0040 [label="佰亮 /袁/"]
-I0063 [label="氏 /吴/"]  [color=pink]
-I0040AndI0063 [shape = point]
-I0040 -- I0040AndI0063 -- I0063
+I0040 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 佰亮<br/>1810 - 1860</td></tr></table>>] 
+I0063 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>吴 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0040AndI0063 [shape = point] 
+I0040 -> I0040AndI0063 -> I0063
 }
 subgraph I0040AndI0063Connect {
 rank = same
 I0040AndI0063Connect [shape = point, width = 0]
 }
-I0040AndI0063 -- I0040AndI0063Connect
+I0040AndI0063 -> I0040AndI0063Connect
 subgraph I0040AndI0063Children {
 rank = same
-I0041 [label="际泰 /袁/"]
-I0042 [label="际虞 /袁/"]
+I0041 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 际泰<br/>1840 - 1890</td></tr></table>>] 
+I0042 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 际虞<br/>1840 - 1890</td></tr></table>>] 
 }
-I0040AndI0063Connect -- I0041
-I0040AndI0063Connect -- I0042
-/////////////////////// No. 17 generation ////////////////////
-//############
+I0040AndI0063Connect -> I0041
+I0040AndI0063Connect -> I0042
+/////////////////////// No. 17 generation //////////////////// 
+//############ 
 subgraph F0017 {
 rank = same
-I0042 [label="际虞 /袁/"]
-I0064 [label="氏 /王/"]  [color=pink]
-I0042AndI0064 [shape = point]
-I0042 -- I0042AndI0064 -- I0064
+I0042 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 际虞<br/>1840 - 1890</td></tr></table>>] 
+I0064 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>王 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0042AndI0064 [shape = point] 
+I0042 -> I0042AndI0064 -> I0064
 }
 subgraph I0042AndI0064Connect {
 rank = same
 I0042AndI0064Connect [shape = point, width = 0]
 }
-I0042AndI0064 -- I0042AndI0064Connect
+I0042AndI0064 -> I0042AndI0064Connect
 subgraph I0042AndI0064Children {
 rank = same
-I0043 [label="均昌 /袁/"]
-I0044 [label="均贞 /袁/"]
-I0045 [label="均政 /袁/"]
+I0043 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 均昌<br/>1870 - 1920</td></tr></table>>] 
+I0044 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 均贞<br/>1870 - 1920</td></tr></table>>] 
+I0045 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 均政<br/>1870 - 1920</td></tr></table>>] 
 }
-I0042AndI0064Connect -- I0043
-I0042AndI0064Connect -- I0044
-I0042AndI0064Connect -- I0045
-/////////////////////// No. 18 generation ////////////////////
-//############
+I0042AndI0064Connect -> I0043
+I0042AndI0064Connect -> I0044
+I0042AndI0064Connect -> I0045
+/////////////////////// No. 18 generation //////////////////// 
+//############ 
 subgraph F0018 {
 rank = same
-I0043 [label="均昌 /袁/"]
-I0065 [label="氏 /王/"]  [color=pink]
-I0043AndI0065 [shape = point]
-I0043 -- I0043AndI0065 -- I0065
+I0043 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 均昌<br/>1870 - 1920</td></tr></table>>] 
+I0065 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>王 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0043AndI0065 [shape = point] 
+I0043 -> I0043AndI0065 -> I0065
 }
 subgraph I0043AndI0065Connect {
 rank = same
 I0043AndI0065Connect [shape = point, width = 0]
 }
-I0043AndI0065 -- I0043AndI0065Connect
+I0043AndI0065 -> I0043AndI0065Connect
 subgraph I0043AndI0065Children {
 rank = same
-I0046 [label="照富 /袁/"]
-I0047 [label="照志 /袁/"]
-I0048 [label="照华 /袁/"]
+I0046 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 照富<br/>1900 - 1950</td></tr></table>>] 
+I0047 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 照志<br/>1900 - 1950</td></tr></table>>] 
+I0048 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 照华<br/>1900 - 1950</td></tr></table>>] 
 }
-I0043AndI0065Connect -- I0046
-I0043AndI0065Connect -- I0047
-I0043AndI0065Connect -- I0048
-/////////////////////// No. 19 generation ////////////////////
-//############
+I0043AndI0065Connect -> I0046
+I0043AndI0065Connect -> I0047
+I0043AndI0065Connect -> I0048
+/////////////////////// No. 19 generation //////////////////// 
+//############ 
 subgraph F0019 {
 rank = same
-I0047 [label="照志 /袁/"]
-I0047W [color=pink]
-I0047AndI0047W [shape = point]
-I0047 -- I0047AndI0047W -- I0047W
+I0047 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 照志<br/>1900 - 1950</td></tr></table>>] 
+I0047W [color=pink] 
+I0047AndI0047W [shape = point] 
+I0047 -> I0047AndI0047W -> I0047W
 }
 subgraph I0047AndI0047WConnect {
 rank = same
 I0047AndI0047WConnect [shape = point, width = 0]
 }
-I0047AndI0047W -- I0047AndI0047WConnect
+I0047AndI0047W -> I0047AndI0047WConnect
 subgraph I0047AndI0047WChildren {
 rank = same
-I0049 [label="春月 /袁/"]
+I0049 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 春月<br/>1929 - 31 JAN 2017</td></tr></table>>] 
 }
-I0047AndI0047WConnect -- I0049
-/////////////////////// No. 20 generation ////////////////////
-//############
+I0047AndI0047WConnect -> I0049
+/////////////////////// No. 20 generation //////////////////// 
+//############ 
 subgraph F0020 {
 rank = same
-I0049 [label="春月 /袁/"]
-I0066 [label="氏 /张/"]  [color=pink]
-I0049AndI0066 [shape = point]
-I0049 -- I0049AndI0066 -- I0066
+I0049 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 春月<br/>1929 - 31 JAN 2017</td></tr></table>>] 
+I0066 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>张 氏<br/> - </td></tr></table>>]  [color=pink] 
+I0049AndI0066 [shape = point] 
+I0049 -> I0049AndI0066 -> I0066
 }
 subgraph I0049AndI0066Connect {
 rank = same
 I0049AndI0066Connect [shape = point, width = 0]
 }
-I0049AndI0066 -- I0049AndI0066Connect
+I0049AndI0066 -> I0049AndI0066Connect
 subgraph I0049AndI0066Children {
 rank = same
-I0050 [label="西平 /袁/"]
-I0051 [label="西安 /袁/"]
-I0052 [label="西法 /袁/"]
-I0053 [label="西青 /袁/"]
-I0054 [label="西花 /袁/"]  [color=pink]
+I0050 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 西平<br/>1952 - </td></tr></table>>] 
+I0051 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 西安<br/>1953 - </td></tr></table>>] 
+I0052 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 西法<br/>1954 - </td></tr></table>>] 
+I0053 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 西青<br/>1955 - </td></tr></table>>] 
+I0054 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>袁 西花<br/>1960 - </td></tr></table>>]  [color=pink] 
 }
-I0049AndI0066Connect -- I0050
-I0049AndI0066Connect -- I0051
-I0049AndI0066Connect -- I0052
-I0049AndI0066Connect -- I0053
-I0049AndI0066Connect -- I0054
-/////////////////////// No. 21 generation ////////////////////
-//############
+I0049AndI0066Connect -> I0050
+I0049AndI0066Connect -> I0051
+I0049AndI0066Connect -> I0052
+I0049AndI0066Connect -> I0053
+I0049AndI0066Connect -> I0054
+/////////////////////// No. 21 generation //////////////////// 
+//############ 
 subgraph F0021 {
 rank = same
-I0050 [label="西平 /袁/"]
-I0067 [label="思荣 /鲁/"]  [color=pink]
-I0050AndI0067 [shape = point]
-I0050 -- I0050AndI0067 -- I0067
+I0050 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 西平<br/>1952 - </td></tr></table>>] 
+I0067 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>鲁 思荣<br/>1953 - </td></tr></table>>]  [color=pink] 
+I0050AndI0067 [shape = point] 
+I0050 -> I0050AndI0067 -> I0067
 }
 subgraph I0050AndI0067Connect {
 rank = same
 I0050AndI0067Connect [shape = point, width = 0]
 }
-I0050AndI0067 -- I0050AndI0067Connect
+I0050AndI0067 -> I0050AndI0067Connect
 subgraph I0050AndI0067Children {
 rank = same
-I0055 [label="青飞 /袁/"]
-I0056 [label="飞燕 /袁/"]  [color=pink]
+I0055 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 青飞<br/>23 MAR 1981 - </td></tr></table>>] 
+I0056 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>袁 飞燕<br/>1983 - </td></tr></table>>]  [color=pink] 
 }
-I0050AndI0067Connect -- I0055
-I0050AndI0067Connect -- I0056
-/////////////////////// No. 22 generation ////////////////////
-//############
+I0050AndI0067Connect -> I0055
+I0050AndI0067Connect -> I0056
+/////////////////////// No. 22 generation //////////////////// 
+//############ 
 subgraph F0022 {
 rank = same
-I0055 [label="青飞 /袁/"]
-I0068 [label="松娟 /孙/"]  [color=pink]
-I0055AndI0068 [shape = point]
-I0055 -- I0055AndI0068 -- I0068
+I0055 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 青飞<br/>23 MAR 1981 - </td></tr></table>>] 
+I0068 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-f.png"/></td></tr><tr><td>孙 松娟<br/>25 DEC 1981 - </td></tr></table>>]  [color=pink] 
+I0055AndI0068 [shape = point] 
+I0055 -> I0055AndI0068 -> I0068
 }
 subgraph I0055AndI0068Connect {
 rank = same
 I0055AndI0068Connect [shape = point, width = 0]
 }
-I0055AndI0068 -- I0055AndI0068Connect
+I0055AndI0068 -> I0055AndI0068Connect
 subgraph I0055AndI0068Children {
 rank = same
-I0057 [label="汉 /袁/"]
+I0057 [label=<<table border="0" cellborder="0"><tr><td><img src="https://yuanqingfei.me/images/placeholder-m.png"/></td></tr><tr><td>袁 汉<br/>23 FEB 2009 - </td></tr></table>>] 
 }
-I0055AndI0068Connect -- I0057
+I0055AndI0068Connect -> I0057
 }
 
+`;
 
-    `);
+d3.select("#graph").graphviz()
+    .addImage("https://yuanqingfei.me/images/placeholder-m.png", 35, 35)
+    .addImage("https://yuanqingfei.me/images/placeholder-f.png", 35, 35)
+    .fade(false)
+    .renderDot(dotString);
 
 </script>
+      
