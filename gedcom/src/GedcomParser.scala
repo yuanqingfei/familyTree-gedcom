@@ -9,7 +9,7 @@ import collection.JavaConverters._
 object MyGedcomParser {
   def main(args: Array[String]): Unit = {
     val gp = new GedcomParser
-    gp.load("gedcom/resources/firstDirect.ged")
+    gp.load("gedcom/resources/Big3And5.ged")
     //    println("ERROR: " + gp.getErrors)
     //    println("WARNING: " + gp.getWarnings)
 
